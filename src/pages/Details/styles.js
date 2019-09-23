@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const User = styled.header`
   display: flex;
@@ -87,5 +87,28 @@ export const RepoList = styled.ul`
       font-size: 12px;
       color: #999;
     }
+  }
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+`;
+
+export const Loading = styled.div`
+  justify-content: center;
+  display: flex;
+  font-size: 30px;
+  align-items: center;
+  height: 100vh;
+
+  svg {
+    margin-right: 10px;
+    animation: ${rotate} 2s linear infinite;
   }
 `;
