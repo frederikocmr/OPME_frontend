@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
@@ -24,16 +24,29 @@ export const UsersList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 460px) {
+    grid-template-columns: 1fr;
+  }
+
   li {
     display: flex;
     flex-direction: column;
     border: 1px solid #eee;
     background-color: #ffffff;
     border-radius: 4px;
-
+    -webkit-box-shadow: 2px 17px 65px -20px rgba(179, 179, 179, 1);
+    -moz-box-shadow: 2px 17px 65px -20px rgba(179, 179, 179, 1);
+    box-shadow: 2px 17px 65px -20px rgba(179, 179, 179, 1);
     &:hover {
       background-color: #eee;
       cursor: pointer;
+      -webkit-box-shadow: 2px 17px 65px -20px #000;
+      -moz-box-shadow: 2px 17px 65px -20px #000;
+      box-shadow: 2px 17px 65px -20px #000;
     }
   }
 
@@ -41,6 +54,7 @@ export const UsersList = styled.ul`
     border: 2px solid #eee;
     max-width: 100%;
     border-radius: 5px 5px 0 0;
+    height: 200px;
   }
 
   div {
@@ -77,5 +91,28 @@ export const StyledLink = styled(Link)`
   &:link,
   &:active {
     text-decoration: none;
+  }
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+`;
+
+export const LoadingBottom = styled.div`
+  justify-content: center;
+  display: flex;
+  font-size: 30px;
+  align-items: center;
+  height: 30px;
+
+  svg {
+    margin-right: 10px;
+    animation: ${rotate} 2s linear infinite;
   }
 `;

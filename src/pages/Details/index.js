@@ -5,7 +5,8 @@ import { FaArrowLeft, FaCircleNotch } from 'react-icons/fa';
 
 import api from '../../services/api';
 import Container from '../../components/Container';
-import { User, RepoList, Button, Loading } from './styles';
+import Loading from '../../components/Loading';
+import { User, RepoList, Button } from './styles';
 
 const propTypes = {
   match: PropTypes.shape({
@@ -47,7 +48,7 @@ class Details extends Component {
         // eslint-disable-next-line no-alert
         alert(
           'A quantidade de consultas à API do Github ultrapassou o limite!' +
-            '\nTente novamente daqui uma hora!'
+            '\nPor favor, tente novamente daqui uma hora!'
         );
       }
     }
@@ -84,18 +85,30 @@ class Details extends Component {
           </p>
           <p>
             <strong>URL: </strong>
-            <a href={details.profile_url}>{details.profile_url}</a>
+            <a
+              href={details.profile_url}
+              target="__blank"
+              style={{ textDecoration: 'none', color: '#666' }}
+            >
+              {details.profile_url}
+            </a>
           </p>
         </User>
 
         <RepoList>
           {repositories.map(repo => (
             <li key={String(repo.id)}>
-              <div>
-                <strong>{repo.name}</strong>
-                <p>#{repo.id}</p>
-                <p>{repo.url}</p>
-              </div>
+              <a
+                href={repo.url}
+                target="__blank"
+                style={{ textDecoration: 'none', color: '#000' }}
+              >
+                <div>
+                  <strong>{repo.name}</strong>
+                  <p>#{repo.id}</p>
+                  <p>{repo.url}</p>
+                </div>
+              </a>
             </li>
           ))}
         </RepoList>

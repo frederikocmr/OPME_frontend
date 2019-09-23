@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components';
+import styled from 'styled-components';
 
 export const User = styled.header`
   display: flex;
@@ -9,6 +9,9 @@ export const User = styled.header`
     width: 160px;
     border-radius: 30%;
     margin-top: 20px;
+    -webkit-box-shadow: 2px 17px 65px -20px rgba(179, 179, 179, 1);
+    -moz-box-shadow: 2px 17px 65px -20px rgba(179, 179, 179, 1);
+    box-shadow: 2px 17px 65px -20px rgba(179, 179, 179, 1);
   }
 
   h1 {
@@ -52,9 +55,17 @@ export const RepoList = styled.ul`
     border-radius: 4px;
     background-color: #fff;
     margin-top: 10px;
+
+    -webkit-box-shadow: 2px 17px 65px -20px rgba(179, 179, 179, 1);
+    -moz-box-shadow: 2px 17px 65px -20px rgba(179, 179, 179, 1);
+    box-shadow: 2px 17px 65px -20px rgba(179, 179, 179, 1);
+
     &:hover {
-      background-color: #eee;
       cursor: pointer;
+
+      -webkit-box-shadow: 2px 17px 30px -20px #000;
+      -moz-box-shadow: 2px 17px 30px -20px #000;
+      box-shadow: 2px 17px 30px -20px #000;
     }
   }
 
@@ -87,28 +98,5 @@ export const RepoList = styled.ul`
       font-size: 12px;
       color: #999;
     }
-  }
-`;
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg)
-  }
-`;
-
-export const Loading = styled.div`
-  justify-content: center;
-  display: flex;
-  font-size: 30px;
-  align-items: center;
-  height: 100vh;
-
-  svg {
-    margin-right: 10px;
-    animation: ${rotate} 2s linear infinite;
   }
 `;
